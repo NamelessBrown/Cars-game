@@ -4,7 +4,7 @@
 Engine::Engine(sf::RenderWindow& window)
 	:m_window(window), m_event(sf::Event())
 {
-	m_stateManager.ChangeState(new MainMenuState());
+	m_stateManager.PushState(new MainMenuState());
 }
 
 Engine::~Engine()
