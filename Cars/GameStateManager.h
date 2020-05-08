@@ -6,7 +6,7 @@
 class GameStateManager
 {
 public:
-	GameStateManager(sf::RenderWindow& window);
+	GameStateManager();
 	GameStateManager(const GameStateManager&) = delete;
 	GameStateManager& operator=(const GameStateManager&) = delete;
 
@@ -17,7 +17,6 @@ public:
 
 	GameState* CurrentState();
 private:
-	sf::RenderWindow& m_window;
 	std::stack<GameState*> m_states;
 };
 
