@@ -1,7 +1,7 @@
 #include "Engine.h"
 
 Engine::Engine(sf::RenderWindow& window)
-	:m_window(window)
+	:m_window(window), m_stateManager(m_window)
 {
 }
 
