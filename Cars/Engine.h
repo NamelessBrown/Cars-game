@@ -8,6 +8,9 @@ class Engine
 {
 public:
 	Engine(sf::RenderWindow& window);
+	Engine(const Engine&) = delete;
+	Engine& operator=(const Engine&) = delete;
+	~Engine();
 
 	void Run();
 private:
