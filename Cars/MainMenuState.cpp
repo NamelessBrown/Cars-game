@@ -1,7 +1,6 @@
 #include "MainMenuState.h"
 
 MainMenuState::MainMenuState()
-	:GameState(this)
 {
 }
 
