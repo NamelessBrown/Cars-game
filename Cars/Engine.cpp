@@ -1,7 +1,7 @@
 #include "Engine.h"
 
 Engine::Engine(sf::RenderWindow& window)
-	:m_window(window), m_stateManager(m_window)
+	:m_window(window), m_event(sf::Event())
 {
 }
 
@@ -10,15 +10,8 @@ void Engine::Run()
 	while (m_window.isOpen())
 	{
 		float dt = m_clock.restart().asSeconds() * 60.f;
-		Update(dt);
-		Render();
+		m_stateManager.CurrentState()->HandleInput(m_window, m_event);
+		m_stateManager.CurrentState()->Update(m_window, dt);
+		m_stateManager.CurrentState()->Render(m_window);
 	}
-}
-
-void Engine::Update(float dt)
-{
-}
-
-void Engine::Render()
-{
 }
