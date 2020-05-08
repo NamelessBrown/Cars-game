@@ -9,7 +9,16 @@ void Engine::Run()
 {
 	while (m_window.isOpen())
 	{
-		m_window.clear();
-		m_window.display();
+		float dt = m_clock.restart().asSeconds() * 60.f;
+		Update(dt);
+		Render();
 	}
+}
+
+void Engine::Update(float dt)
+{
+}
+
+void Engine::Render()
+{
 }
