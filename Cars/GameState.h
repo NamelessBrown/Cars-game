@@ -5,8 +5,8 @@
 class GameState
 {
 public:
-    virtual void draw(sf::RenderTarget& target, const float dt) = 0;
-    virtual void update(sf::RenderWindow& window, const float dt) = 0;
-    virtual void handleInput(sf::RenderWindow& window, sf::Event& events) = 0;
+    virtual void Render(sf::RenderTarget& target) = 0;
+    virtual void Update(sf::RenderWindow& window, const float dt) = 0;
+    virtual void HandleInput(sf::RenderWindow& window, sf::Event& events) = 0;
 };
 
