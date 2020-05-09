@@ -1,12 +1,12 @@
 #include "Button.h"
 
-Button::Button(const sf::Vector2f& position, const std::string& fontFileName, const std::string& textureFile, const int textposition)
+Button::Button(const sf::Vector2f& position, const sf::Font& font, const sf::Texture& texture, const int textposition)
 	/*
 		The textpositionX is how far you want the text position in the {X,Y} direction to be from the GUI button. 
 	*/
 {
-	m_texture.loadFromFile(textureFile);
-	m_font.loadFromFile(fontFileName);
+	m_texture = texture;
+	m_font = font;
 	m_text.setFont(m_font);
 	m_text.setString("Defualt");
 	m_text.setCharacterSize(20);

@@ -10,7 +10,7 @@ public:
 	Button(const Button&) = delete;
 	Button operator=(const Button&) = delete;
 
-	Button(const sf::Vector2f& position, const std::string& fontFileName, const std::string& textureFile, const int textposition);
+	Button(const sf::Vector2f& position, const sf::Font& font, const sf::Texture& texture, const int textposition);
 
 	virtual ~Button();
 
