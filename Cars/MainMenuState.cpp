@@ -29,7 +29,10 @@ void MainMenuState::HandleInput(sf::RenderWindow& window, sf::Event& events)
 
 void MainMenuState::Update(sf::RenderWindow& window, const float dt)
 {
-
+	if (m_startButton.IsClicked(sf::Mouse::getPosition(window)))
+	{
+		m_stateManagerRef.PushState(new PlayState());
+	}
 }
 
 void MainMenuState::Render(sf::RenderWindow& window)

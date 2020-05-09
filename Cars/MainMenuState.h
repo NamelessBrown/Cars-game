@@ -4,6 +4,7 @@
 #include "Button.h"
 #include "ResourceHolder.h"
 #include "GameStateManager.h"
+#include "PlayState.h"
 
 class MainMenuState : public GameState
 {
