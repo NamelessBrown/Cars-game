@@ -1,7 +1,8 @@
 #include "MainMenuState.h"
 
-MainMenuState::MainMenuState(ResourceHolder& textureManger)
-	:m_startButton(sf::Vector2f(0.f, 250.f), textureManger.getFont("Font/NovaMono.ttf"), textureManger.getTexture("Textures/start.png"), 25)
+MainMenuState::MainMenuState(ResourceHolder& textureManger, GameStateManager& states)
+	:m_startButton(sf::Vector2f(0.f, 250.f), textureManger.getFont("Font/NovaMono.ttf"), textureManger.getTexture("Textures/start.png"), 25),
+	m_stateManagerRef(states)
 {
 	m_startButton.SetScale(6.f);
 	m_startButton.SetText("");
