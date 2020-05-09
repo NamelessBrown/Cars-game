@@ -1,6 +1,7 @@
 #include "MainMenuState.h"
 
-MainMenuState::MainMenuState()
+MainMenuState::MainMenuState(ResourceHolder& textureManger)
+	:m_startButton(sf::Vector2f(250.f, 250.f), textureManger.getFont("Font/NovaMono.ttf"), textureManger.getTexture("Textures/start.png"), 25)
 {
 }
 
@@ -25,11 +26,14 @@ void MainMenuState::HandleInput(sf::RenderWindow& window, sf::Event& events)
 
 void MainMenuState::Update(sf::RenderWindow& window, const float dt)
 {
+
 }
 
 void MainMenuState::Render(sf::RenderWindow& window)
 {
 	window.clear();
+
+	m_startButton.Draw(window);
 
 	window.display();
 }
