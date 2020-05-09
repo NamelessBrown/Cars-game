@@ -61,10 +61,15 @@ void Button::MovePosition(const sf::Vector2f& newPosition)
 	m_sprite.setPosition(newPosition);
 }
 
-void Button::ChangeedFont(const std::string fontFileName)
+void Button::SetFont(const std::string fontFileName)
 {
 	m_font.loadFromFile(fontFileName);
 	m_text.setFont(m_font);
+}
+
+void Button::SetText(const std::string newText)
+{
+	m_text.setString(newText);
 }
 
 void Button::SetTexture(sf::Texture& texture)
