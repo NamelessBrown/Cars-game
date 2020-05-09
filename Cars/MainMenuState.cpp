@@ -3,7 +3,8 @@
 MainMenuState::MainMenuState(ResourceHolder& textureManger)
 	:m_startButton(sf::Vector2f(0.f, 250.f), textureManger.getFont("Font/NovaMono.ttf"), textureManger.getTexture("Textures/start.png"), 25)
 {
-	m_startButton.SetScale(4.f);
+	m_startButton.SetScale(6.f);
+	m_startButton.SetText("");
 }
 
 void MainMenuState::HandleInput(sf::RenderWindow& window, sf::Event& events)
