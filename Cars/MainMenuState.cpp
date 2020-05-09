@@ -2,10 +2,14 @@
 
 MainMenuState::MainMenuState(ResourceHolder& textureManger, GameStateManager& states)
 	:m_startButton(sf::Vector2f(0.f, 250.f), textureManger.getFont("Font/NovaMono.ttf"), textureManger.getTexture("Textures/start.png"), 25),
+	m_quitButton(sf::Vector2f(0.f, 325.0f), textureManger.getFont("Font/NovaMono.ttf"), textureManger.getTexture("Textures/quit.png"), 25),
 	m_stateManagerRef(states)
 {
 	m_startButton.SetScale(6.f);
+	m_quitButton.SetScale(2.f);
+
 	m_startButton.SetText("");
+	m_quitButton.SetText("");
 }
 
 void MainMenuState::HandleInput(sf::RenderWindow& window, sf::Event& events)
@@ -33,6 +37,12 @@ void MainMenuState::Update(sf::RenderWindow& window, const float dt)
 	{
 		m_stateManagerRef.PushState(new PlayState());
 	}
+
+	if (m_quitButton.IsClicked(sf::Mouse::getPosition(window)))
+	{
+		window.close();
+	}
+
 }
 
 void MainMenuState::Render(sf::RenderWindow& window)
@@ -40,6 +50,7 @@ void MainMenuState::Render(sf::RenderWindow& window)
 	window.clear();
 
 	m_startButton.Draw(window);
+	m_quitButton.Draw(window);
 
 	window.display();
 }
