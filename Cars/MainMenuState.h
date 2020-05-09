@@ -10,11 +10,16 @@ class MainMenuState : public GameState
 {
 public:
     MainMenuState(ResourceHolder& textureManger, GameStateManager& states);
+    MainMenuState(const MainMenuState&) = delete;
+    MainMenuState& operator=(const MainMenuState&) = delete;
+    ~MainMenuState();
+public:
     virtual void Render(sf::RenderWindow& window);
     virtual void Update(sf::RenderWindow& window, const float dt);
     virtual void HandleInput(sf::RenderWindow& window, sf::Event& events);
 private:
     GameStateManager& m_stateManagerRef;
+    ResourceHolder& m_resourceManagerRef;
     Button m_startButton;
     Button m_quitButton;
 

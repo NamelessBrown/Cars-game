@@ -1,5 +1,22 @@
 #include "PlayState.h"
 
+void PlayState::LoadTiles()
+{
+	m_tile = new Tile(m_resourceManger.getTexture("Textures/grass.jpg"));
+}
+
+PlayState::PlayState(ResourceHolder& resourceManger)
+	:m_resourceManger(resourceManger)
+{
+	LoadTiles();
+}
+
+PlayState::~PlayState()
+{
+	delete m_tile;
+}
+
+
 void PlayState::HandleInput(sf::RenderWindow& window, sf::Event& events)
 {
 	while (window.pollEvent(events))
@@ -19,14 +36,15 @@ void PlayState::HandleInput(sf::RenderWindow& window, sf::Event& events)
 	}
 }
 
-
 void PlayState::Update(sf::RenderWindow& window, const float dt)
 {
 }
 
 void PlayState::Render(sf::RenderWindow& window)
 {
-	window.clear(sf::Color::Blue);
+	window.clear();
+
+	m_tile->Draw(250.f, 250.f, window);
 
 	window.display();
 }
