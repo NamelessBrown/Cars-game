@@ -76,7 +76,7 @@ void Camera::Update(float dt)
 
 }
 
-const sf::Vector2i& Camera::GetPosition() const
+const sf::Vector2i Camera::GetPosition() const
 {
 	return sf::Vector2i((int)m_position.x, (int)m_position.y);
 }

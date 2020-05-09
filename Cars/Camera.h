@@ -20,7 +20,7 @@ public:
 	void GoTo(int x, int y);
 	void GoToCenter(int x, int y);
 	void Update(float dt);
-	const sf::Vector2i& GetPosition() const;
+	const sf::Vector2i GetPosition() const;
 	sf::Vector2i GetTileOffset(int tileSize);
 	sf::IntRect GetTileBounds(int tileSize);
 private:
