@@ -1,4 +1,5 @@
 #include "GameStateManager.h"
+#include <iostream>
 
 GameStateManager::GameStateManager()
 {
@@ -9,6 +10,7 @@ GameStateManager::~GameStateManager()
 	while (!m_states.empty())
 	{
 		PopState();
+		std::cout << "Pop state!\n";
 	}
 }
 
