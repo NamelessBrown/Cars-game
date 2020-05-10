@@ -171,7 +171,6 @@
     <ClCompile Include="MainMenuState.cpp" />
     <ClCompile Include="PlayState.cpp" />
     <ClCompile Include="ResourceHolder.cpp" />
-    <ClCompile Include="Tile.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h" />
@@ -183,7 +182,6 @@
     <ClInclude Include="MainMenuState.h" />
     <ClInclude Include="PlayState.h" />
     <ClInclude Include="ResourceHolder.h" />
-    <ClInclude Include="Tile.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
