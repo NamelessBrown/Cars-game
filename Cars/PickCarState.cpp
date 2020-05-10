@@ -14,7 +14,8 @@ PickCarState::PickCarState(ResourceHolder& resources, GameStateManager& gameStat
 	m_currentCar.SetText("");
 
 	m_Cars.setTexture(m_resourceRef.getTexture("Textures/Cars2.png"));
-	m_Cars.setTextureRect(sf::IntRect(0, 0, m_width, m_height));
+	m_textureRect = sf::IntRect(0, 0, 98, 98);
+	m_Cars.setTextureRect(m_textureRect);
 	m_Cars.setScale(m_Cars.getScale() / 2.f);
 	m_Cars.setPosition(720.f, 180.f);
 }
@@ -41,14 +42,16 @@ void PickCarState::HandleInput(sf::RenderWindow& window, sf::Event& events)
 			{
 				if (m_rightButton.IsClicked(sf::Mouse::getPosition(window)))
 				{
-					m_top += 97;
-					m_Cars.setTextureRect(sf::IntRect(0, m_top, m_width, m_height));
+					m_textureRect.top += 98;
+					//m_top += 97;
+					m_Cars.setTextureRect(m_textureRect);
 				}
 
 				if (m_leftButton.IsClicked(sf::Mouse::getPosition(window)))
 				{
-					m_top -= 97;
-					m_Cars.setTextureRect(sf::IntRect(0, m_top, m_width, m_height));
+					m_textureRect.top -= 98;
+					//m_top -= 97;
+					m_Cars.setTextureRect(m_textureRect);
 				}
 			}
 			break;
@@ -63,7 +66,7 @@ void PickCarState::Update(sf::RenderWindow& window, const float dt)
 	if (m_currentCar.IsClicked(sf::Mouse::getPosition(window)))
 	{
 		//TODO: pass the car sprite that is selected to the PlayState
-		m_gameStateManagerRef.PushState(new PlayState(m_resourceRef));
+		m_gameStateManagerRef.PushState(new PlayState(m_resourceRef, m_textureRect));
 	}
 }
 

@@ -22,14 +22,15 @@ private:
 	GameStateManager& m_gameStateManagerRef;
 
 	sf::Sprite m_Cars;
+	sf::IntRect m_textureRect;
 
 	Button m_leftButton;
 	Button m_rightButton;
 	Button m_currentCar;
 
-	//for the car pictures (97 is the defualt value of the picture)
+	/* for the car pictures (97 is the defualt value of the picture)
 	int m_width = 98;
 	int m_height = 98;
-	int m_top = 0;
+	int m_top = 0; */
 };
 
