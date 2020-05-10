@@ -1,10 +1,13 @@
 #include "PlayState.h"
 
-PlayState::PlayState(ResourceHolder& resourceManger)
-	:m_resourceManger(resourceManger)
+PlayState::PlayState(ResourceHolder& resourceManger, sf::IntRect& textureRect)
+	:m_resourceManger(resourceManger), m_player(m_resourceManger.getTexture("Textures/cars2.png"), textureRect)
 {
 	m_background.setTexture(m_resourceManger.getTexture("Textures/ground.jpg"));
 	m_background.setPosition(300.f, 0.f);
+
+
+
 }
 
 PlayState::~PlayState()
@@ -41,6 +44,7 @@ void PlayState::Render(sf::RenderWindow& window)
 	window.clear();
 
 	window.draw(m_background);
+	m_player.Render(window);
 
 	window.display();
 }
