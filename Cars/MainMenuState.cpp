@@ -41,7 +41,7 @@ void MainMenuState::Update(sf::RenderWindow& window, const float dt)
 {
 	if (m_startButton.IsClicked(sf::Mouse::getPosition(window)))
 	{
-		m_stateManagerRef.PushState(new PickCarState(m_resourceManagerRef));
+		m_stateManagerRef.PushState(new PickCarState(m_resourceManagerRef, m_stateManagerRef));
 	}
 
 	if (m_quitButton.IsClicked(sf::Mouse::getPosition(window)))
