@@ -2,7 +2,6 @@
 
 #include "GameState.h"
 #include "ResourceHolder.h"
-#include "Tile.h"
 
 class PlayState : public GameState
 {
@@ -17,7 +16,6 @@ public:
     virtual void HandleInput(sf::RenderWindow& window, sf::Event& events);
 private:
     ResourceHolder& m_resourceManger;
-    void LoadTiles();
-    Tile* m_tile = nullptr;
+    sf::Sprite m_background;
 };
 

@@ -1,19 +1,14 @@
 #include "PlayState.h"
 
-void PlayState::LoadTiles()
-{
-	m_tile = new Tile(m_resourceManger.getTexture("Textures/grass.jpg"));
-}
-
 PlayState::PlayState(ResourceHolder& resourceManger)
 	:m_resourceManger(resourceManger)
 {
-	LoadTiles();
+	m_background.setTexture(m_resourceManger.getTexture("Textures/ground.jpg"));
 }
 
 PlayState::~PlayState()
 {
-	delete m_tile;
+
 }
 
 
@@ -44,7 +39,7 @@ void PlayState::Render(sf::RenderWindow& window)
 {
 	window.clear();
 
-	m_tile->Draw(250.f, 250.f, window);
+	window.draw(m_background);
 
 	window.display();
 }
