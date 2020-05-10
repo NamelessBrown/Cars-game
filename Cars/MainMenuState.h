@@ -20,6 +20,9 @@ public:
 private:
     GameStateManager& m_stateManagerRef;
     ResourceHolder& m_resourceManagerRef;
+
+    sf::Sprite m_background;
+
     Button m_startButton;
     Button m_quitButton;
 

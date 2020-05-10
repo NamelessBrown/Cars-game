@@ -7,9 +7,11 @@ MainMenuState::MainMenuState(ResourceHolder& textureManger, GameStateManager& st
 {
 	m_startButton.SetScale(6.f);
 	m_quitButton.SetScale(2.f);
-
 	m_startButton.SetText("");
 	m_quitButton.SetText("");
+
+	m_background.setTexture(m_resourceManagerRef.getTexture("Textures/Cars title menu.png"));
+	m_background.setPosition(540.f, 160.f);
 }
 
 MainMenuState::~MainMenuState()
@@ -55,6 +57,8 @@ void MainMenuState::Render(sf::RenderWindow& window)
 
 	m_startButton.Draw(window);
 	m_quitButton.Draw(window);
+
+	window.draw(m_background);
 
 	window.display();
 }
