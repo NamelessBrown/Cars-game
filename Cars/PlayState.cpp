@@ -4,6 +4,7 @@ PlayState::PlayState(ResourceHolder& resourceManger)
 	:m_resourceManger(resourceManger)
 {
 	m_background.setTexture(m_resourceManger.getTexture("Textures/ground.jpg"));
+	m_background.setPosition(300.f, 0.f);
 }
 
 PlayState::~PlayState()
