@@ -10,6 +10,10 @@ public:
 	void Update(float dt);
 	void Render(sf::RenderWindow& window);
 private:
+	void Movement(float dt);
+private:
 	sf::Sprite m_sprite;
+
+	float m_speed;
 };
 

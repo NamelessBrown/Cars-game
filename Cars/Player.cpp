@@ -1,6 +1,7 @@
 #include "Player.h"
 
 Player::Player(sf::Texture& texture, sf::IntRect& textureRect)
+	:m_speed(1.5f)
 {
 	m_sprite.setTexture(texture);
 	m_sprite.setTextureRect(textureRect);
@@ -10,9 +11,30 @@ Player::Player(sf::Texture& texture, sf::IntRect& textureRect)
 
 void Player::Update(float dt)
 {
+	Movement(dt);
 }
 
 void Player::Render(sf::RenderWindow& window)
 {
 	window.draw(m_sprite);
+}
+
+void Player::Movement(float dt)
+{
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::D) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
+	{
+		m_sprite.move(m_speed * dt, 0.f);
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::A) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
+	{
+		m_sprite.move(-(m_speed * dt), 0.f);
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::W) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Up))
+	{
+		m_sprite.move(0.f, -(m_speed * dt));
+	}
+	else if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S) || sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Down))
+	{
+		m_sprite.move(0.f, m_speed * dt);
+	}
 }
