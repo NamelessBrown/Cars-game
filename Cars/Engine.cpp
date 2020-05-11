@@ -4,6 +4,9 @@
 Engine::Engine(sf::RenderWindow& window)
 	:m_window(window), m_event(sf::Event())
 {
+	sf::Image pic;
+	pic.loadFromFile("Textures/Cars title menu.png");
+	m_window.setIcon(pic.getSize().x, pic.getSize().y, pic.getPixelsPtr());
 	m_stateManager.PushState(new MainMenuState(m_resourceManager, m_stateManager));
 }
 
