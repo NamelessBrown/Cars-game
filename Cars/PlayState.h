@@ -15,11 +15,16 @@ public:
     virtual void Render(sf::RenderWindow& window);
     virtual void Update(sf::RenderWindow& window, const float dt);
     virtual void HandleInput(sf::RenderWindow& window, sf::Event& events);
+
+    void MoveBackground(const float dt);
 private:
     ResourceHolder& m_resourceManger;
     sf::Sprite m_background;
 
     Player m_player;
+
+    double m_backgroundScroll;
+    double m_backgroundScrollSpeed;
 
 };
 
