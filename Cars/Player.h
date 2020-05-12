@@ -6,7 +6,7 @@
 class Player
 {
 public:
-	Player(sf::Texture& texture, sf::IntRect& textureRect, const sf::Font& font);
+	Player(sf::Texture& texture, sf::IntRect& textureRect, const sf::Font& font, sf::Texture& upgradeTexture);
 
 	bool isDead();
 	const sf::Sprite& GetSprite() const { return m_sprite; }
@@ -25,5 +25,6 @@ private:
 	int m_health;
 	float m_speed;
 	int m_points;
+	int m_MaxPointsToUpgrade;
 };
 
