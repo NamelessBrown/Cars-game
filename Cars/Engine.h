@@ -3,6 +3,7 @@
 #include <SFML/Graphics.hpp>
 #include "ResourceHolder.h"
 #include "GameStateManager.h"
+#include "Music.h"
 
 class Engine
 {
@@ -20,5 +21,8 @@ private:
 
 	ResourceHolder m_resourceManager;
 	GameStateManager m_stateManager;
+
+	Music m_music;
+
 };
 
