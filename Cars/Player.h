@@ -9,6 +9,7 @@ public:
 
 	bool isDead();
 	const sf::Sprite& GetSprite() const { return m_sprite; }
+	void GainPoints(int p) { m_points += p; }
 	void LoseHealth(int neg) { m_health -= neg; }
 	void Update(float dt);
 	void Render(sf::RenderWindow& window);
@@ -20,5 +21,6 @@ private:
 
 	int m_health;
 	float m_speed;
+	int m_points;
 };
 

@@ -2,7 +2,7 @@
 #include <sstream>
 
 Player::Player(sf::Texture& texture, sf::IntRect& textureRect, const sf::Font& font)
-	:m_speed(1.5f), m_health(100)
+	:m_speed(1.5f), m_health(100), m_points(0)
 {
 	m_sprite.setTexture(texture);
 	m_sprite.setTextureRect(textureRect);
@@ -23,7 +23,8 @@ void Player::Update(float dt)
 	Movement(dt);
 
 	std::stringstream ss;
-	ss << "Health: " << m_health << " Speed: " << m_speed;
+	ss << "Health: " << m_health << " Speed: " << m_speed << '\n';
+	ss << "Points: " << m_points;
 	m_text.setString(ss.str());
 }
 
