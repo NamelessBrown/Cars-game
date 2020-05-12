@@ -4,7 +4,8 @@
 #include "Collision.h"
 
 PlayState::PlayState(ResourceHolder& resourceManger, sf::IntRect& textureRect, GameStateManager& gameStateManager)
-	:m_resourceManger(resourceManger), m_player(m_resourceManger.getTexture("Textures/cars.jpg"), textureRect, resourceManger.getFont("Font/NovaMono.ttf")), 
+	:m_resourceManger(resourceManger), m_player(m_resourceManger.getTexture("Textures/cars.jpg"), textureRect, 
+		resourceManger.getFont("Font/NovaMono.ttf"), m_resourceManger.getTexture("Textures/upgradeSpeed.png")), 
 	m_backgroundScroll(.5f), m_backgroundScrollSpeed(.5f), m_gameStateManager(gameStateManager)
 {
 	m_background.setTexture(m_resourceManger.getTexture("Textures/road.jpg"));
