@@ -9,7 +9,7 @@ PlayState::PlayState(ResourceHolder& resourceManger, sf::IntRect& textureRect, G
 	m_background.setTexture(m_resourceManger.getTexture("Textures/road.jpg"));
 	m_background.setPosition(300.f, 0.f);
 
-	m_bombs.emplace_back(Bombs(m_resourceManger.getTexture("Textures/bomb.png")));
+	SpawnBomb(5);
 }
 
 PlayState::~PlayState()
@@ -69,7 +69,7 @@ void PlayState::Update(sf::RenderWindow& window, const float dt)
 
 		}
 
-		if (m_bombs.size() < 2)
+		if (m_bombs.size() < 3)
 		{
 			SpawnBomb(4);
 		}
