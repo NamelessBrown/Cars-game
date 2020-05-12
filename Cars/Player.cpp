@@ -2,7 +2,7 @@
 #include <sstream>
 
 Player::Player(sf::Texture& texture, sf::IntRect& textureRect, const sf::Font& font)
-	:m_speed(1.5f), m_health(100), m_points(0)
+	:m_speed(1.5f), m_health(100), m_points(0), m_upgradeSpeed({800.f, 25.f}, font, texture, 12)
 {
 	m_sprite.setTexture(texture);
 	m_sprite.setTextureRect(textureRect);
@@ -11,6 +11,8 @@ Player::Player(sf::Texture& texture, sf::IntRect& textureRect, const sf::Font& f
 
 	m_text.setFont(font);
 	m_text.setPosition(700.f, 25.f);
+
+	m_upgradeSpeed.SetText("Upgrade speed");
 }
 
 bool Player::isDead()
@@ -18,7 +20,7 @@ bool Player::isDead()
 	return m_health <= 0;
 }
 
-void Player::Update(float dt)
+void Player::Update(sf::RenderWindow& window, float dt)
 {
 	Movement(dt);
 
@@ -26,12 +28,19 @@ void Player::Update(float dt)
 	ss << "Health: " << m_health << " Speed: " << m_speed << '\n';
 	ss << "Points: " << m_points;
 	m_text.setString(ss.str());
+
+	if (m_upgradeSpeed.IsClicked(sf::Mouse::getPosition(window)))
+	{
+		m_speed += 1.5f;
+	}
+
 }
 
 void Player::Render(sf::RenderWindow& window)
 {
 	window.draw(m_sprite);
 	window.draw(m_text);
+	m_upgradeSpeed.Draw(window);
 }
 
 void Player::Movement(float dt)
