@@ -65,7 +65,7 @@ void PickCarState::Update(sf::RenderWindow& window, const float dt)
 {
 	if (m_currentCar.IsClicked(sf::Mouse::getPosition(window)))
 	{
-		m_gameStateManagerRef.PushState(new PlayState(m_resourceRef, m_textureRect));
+		m_gameStateManagerRef.PushState(new PlayState(m_resourceRef, m_textureRect, m_gameStateManagerRef));
 	}
 }
 
