@@ -43,6 +43,14 @@ void PlayState::MoveBackground(const float dt)
 	m_background.setPosition(300.f, -(float)m_backgroundScroll);
 }
 
+void PlayState::SpawnBomb(int amount)
+{
+	for (int i = 0; i < amount; i++)
+	{
+		m_bombs.emplace_back(Bombs(m_resourceManger.getTexture("Textures/bomb.png")));
+	}
+}
+
 void PlayState::Update(sf::RenderWindow& window, const float dt)
 {
 	if (!m_player.isDead())
@@ -50,9 +58,20 @@ void PlayState::Update(sf::RenderWindow& window, const float dt)
 		m_player.Update(dt);
 		MoveBackground(dt);
 
-		for (auto& e : m_bombs)
+		for (int i = 0; i < m_bombs.size(); i++)
 		{
-			e.Update(dt);
+			m_bombs[i].Update(dt);
+
+			if (m_bombs[i].GetSprite().getPosition().y > 720)
+			{
+				m_bombs.erase(m_bombs.begin() + i);
+			}
+
+		}
+
+		if (m_bombs.size() < 2)
+		{
+			SpawnBomb(4);
 		}
 
 	}

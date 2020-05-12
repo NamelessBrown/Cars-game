@@ -19,8 +19,9 @@ public:
     virtual void Render(sf::RenderWindow& window);
     virtual void Update(sf::RenderWindow& window, const float dt);
     virtual void HandleInput(sf::RenderWindow& window, sf::Event& events);
-
+private:
     void MoveBackground(const float dt);
+    void SpawnBomb(int amount);
 private:
     ResourceHolder& m_resourceManger;
     GameStateManager& m_gameStateManager;
