@@ -74,6 +74,7 @@ void PlayState::Update(sf::RenderWindow& window, const float dt)
 
 			if (m_bombs[i].GetSprite().getPosition().y > 720)
 			{
+				m_player.GainPoints(m_bombs[i].GetDamage()); //Points are earn by the damage of the bomb
 				m_bombs.erase(m_bombs.begin() + i);
 			}
 
