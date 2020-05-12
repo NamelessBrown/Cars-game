@@ -1,12 +1,16 @@
 #include "Player.h"
+#include <sstream>
 
-Player::Player(sf::Texture& texture, sf::IntRect& textureRect)
+Player::Player(sf::Texture& texture, sf::IntRect& textureRect, const sf::Font& font)
 	:m_speed(1.5f), m_health(100)
 {
 	m_sprite.setTexture(texture);
 	m_sprite.setTextureRect(textureRect);
 	m_sprite.setScale(m_sprite.getScale() / 2.f);
 	m_sprite.setPosition(480.f, 450.f);
+
+	m_text.setFont(font);
+	m_text.setPosition(700.f, 25.f);
 }
 
 bool Player::isDead()
@@ -17,11 +21,16 @@ bool Player::isDead()
 void Player::Update(float dt)
 {
 	Movement(dt);
+
+	std::stringstream ss;
+	ss << "Health: " << m_health << " Speed: " << m_speed;
+	m_text.setString(ss.str());
 }
 
 void Player::Render(sf::RenderWindow& window)
 {
 	window.draw(m_sprite);
+	window.draw(m_text);
 }
 
 void Player::Movement(float dt)

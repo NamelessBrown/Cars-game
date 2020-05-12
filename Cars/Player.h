@@ -5,7 +5,7 @@
 class Player
 {
 public:
-	Player(sf::Texture& texture, sf::IntRect& textureRect);
+	Player(sf::Texture& texture, sf::IntRect& textureRect, const sf::Font& font);
 
 	bool isDead();
 	const sf::Sprite& GetSprite() const { return m_sprite; }
@@ -16,6 +16,7 @@ private:
 	void Movement(float dt);
 private:
 	sf::Sprite m_sprite;
+	sf::Text m_text;
 
 	int m_health;
 	float m_speed;
