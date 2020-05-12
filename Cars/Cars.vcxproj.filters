@@ -57,6 +57,9 @@
     <ClCompile Include="GameOverState.cpp">
       <Filter>Source Files\GameStates</Filter>
     </ClCompile>
+    <ClCompile Include="Bombs.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -94,6 +97,9 @@
     </ClInclude>
     <ClInclude Include="GameOverState.h">
       <Filter>Source Files\GameStates</Filter>
+    </ClInclude>
+    <ClInclude Include="Bombs.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>
