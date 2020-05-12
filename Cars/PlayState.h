@@ -1,10 +1,12 @@
 #pragma once
 
+#include <vector>
 #include "GameState.h"
 #include "ResourceHolder.h"
 #include "Player.h"
 #include "Button.h"
 #include "GameStateManager.h"
+#include "Bombs.h"
 
 class PlayState : public GameState
 {
@@ -26,6 +28,7 @@ private:
 
     Button m_upgradeButton;
     Player m_player;
+    std::vector<Bombs> m_bombs;
 
     double m_backgroundScroll;
     double m_backgroundScrollSpeed;

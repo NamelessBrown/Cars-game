@@ -8,6 +8,8 @@ PlayState::PlayState(ResourceHolder& resourceManger, sf::IntRect& textureRect, G
 {
 	m_background.setTexture(m_resourceManger.getTexture("Textures/road.jpg"));
 	m_background.setPosition(300.f, 0.f);
+
+	m_bombs.emplace_back(Bombs(m_resourceManger.getTexture("Textures/bomb.png")));
 }
 
 PlayState::~PlayState()
@@ -47,6 +49,12 @@ void PlayState::Update(sf::RenderWindow& window, const float dt)
 	{
 		m_player.Update(dt);
 		MoveBackground(dt);
+
+		for (auto& e : m_bombs)
+		{
+			e.Update(dt);
+		}
+
 	}
 	else
 	{
@@ -60,6 +68,11 @@ void PlayState::Render(sf::RenderWindow& window)
 
 	window.draw(m_background);
 	m_player.Render(window);
+
+	for (auto& e : m_bombs)
+	{
+		e.Render(window);
+	}
 
 	window.display();
 }
