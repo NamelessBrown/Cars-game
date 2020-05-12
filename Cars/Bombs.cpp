@@ -8,7 +8,7 @@ Bombs::Bombs(sf::Texture& texture)
 	std::random_device rd;
 	std::mt19937 rng(rd());
 	std::uniform_real_distribution<float> distribution(300.f, 500.f);
-	std::uniform_real_distribution<float> speedDistribution(0.5f, 5.5f);
+	std::uniform_real_distribution<float> speedDistribution(1.5f, 5.5f);
 	std::uniform_int_distribution<int> damageDistribution(1, 10);
 
 	m_speed = speedDistribution(rng);
