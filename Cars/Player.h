@@ -7,6 +7,7 @@ class Player
 public:
 	Player(sf::Texture& texture, sf::IntRect& textureRect);
 
+	bool isDead();
 	void Update(float dt);
 	void Render(sf::RenderWindow& window);
 private:
@@ -14,6 +15,7 @@ private:
 private:
 	sf::Sprite m_sprite;
 
+	int m_health;
 	float m_speed;
 };
 

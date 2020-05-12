@@ -1,12 +1,17 @@
 #include "Player.h"
 
 Player::Player(sf::Texture& texture, sf::IntRect& textureRect)
-	:m_speed(1.5f)
+	:m_speed(1.5f), m_health(100)
 {
 	m_sprite.setTexture(texture);
 	m_sprite.setTextureRect(textureRect);
 	m_sprite.setScale(m_sprite.getScale() / 2.f);
 	m_sprite.setPosition(480.f, 450.f);
+}
+
+bool Player::isDead()
+{
+	return m_health <= 0;
 }
 
 void Player::Update(float dt)
