@@ -4,7 +4,7 @@
 #include "Collision.h"
 
 PlayState::PlayState(ResourceHolder& resourceManger, sf::IntRect& textureRect, GameStateManager& gameStateManager)
-	:m_resourceManger(resourceManger), m_player(m_resourceManger.getTexture("Textures/cars.jpg"), textureRect), 
+	:m_resourceManger(resourceManger), m_player(m_resourceManger.getTexture("Textures/cars.jpg"), textureRect, resourceManger.getFont("Font/NovaMono.ttf")), 
 	m_backgroundScroll(.5f), m_backgroundScrollSpeed(.5f), m_gameStateManager(gameStateManager)
 {
 	m_background.setTexture(m_resourceManger.getTexture("Textures/road.jpg"));
@@ -84,7 +84,7 @@ void PlayState::Update(sf::RenderWindow& window, const float dt)
 
 		Collision();
 
-		if (m_bombs.size() < 3)
+		if (m_bombs.size() < 3) 
 		{
 			SpawnBomb(4);
 		}
