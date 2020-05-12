@@ -21,8 +21,11 @@ private:
 	sf::Text m_text;
 
 	Button m_upgradeSpeed;
+	Button m_upgradeHealth;
 
 	int m_health;
+	int m_healthMax; //Max health for the player
+	int m_MaxHealthToUpgrade; //This is use for upgrading the healthMax var
 	float m_speed;
 	int m_points;
 	int m_MaxPointsToUpgrade;

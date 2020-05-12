@@ -2,7 +2,8 @@
 #include <sstream>
 
 Player::Player(sf::Texture& texture, sf::IntRect& textureRect, const sf::Font& font, sf::Texture& upgradeTexture)
-	:m_speed(1.5f), m_health(100), m_points(0), m_upgradeSpeed({900.f, 250.f}, font, upgradeTexture, 50), m_MaxPointsToUpgrade(50)
+	:m_speed(1.5f), m_health(100), m_points(0), m_upgradeSpeed({900.f, 250.f}, font, upgradeTexture, 50), 
+	m_MaxPointsToUpgrade(50), m_MaxHealthToUpgrade(100), m_upgradeHealth({900.f, 450.f}, font, upgradeTexture, 50), m_healthMax(100)
 {
 	m_sprite.setTexture(texture);
 	m_sprite.setTextureRect(textureRect);
@@ -14,6 +15,9 @@ Player::Player(sf::Texture& texture, sf::IntRect& textureRect, const sf::Font& f
 
 	m_upgradeSpeed.SetText("Upgrade speed");
 	m_upgradeSpeed.SetScale(6.f);
+
+	m_upgradeHealth.SetText("Upgrade Health");
+	m_upgradeHealth.SetScale(6.f);
 }
 
 bool Player::isDead()
@@ -36,6 +40,14 @@ void Player::Update(sf::RenderWindow& window, float dt)
 		m_MaxPointsToUpgrade += 50;
 	}
 
+	if (m_upgradeHealth.IsClicked(sf::Mouse::getPosition(window)) && m_points > m_MaxHealthToUpgrade)
+	{
+		m_health = m_healthMax;
+		m_healthMax = m_MaxHealthToUpgrade;
+		m_MaxHealthToUpgrade += 100;
+	}
+
+
 }
 
 void Player::Render(sf::RenderWindow& window)
@@ -43,6 +55,7 @@ void Player::Render(sf::RenderWindow& window)
 	window.draw(m_sprite);
 	window.draw(m_text);
 	m_upgradeSpeed.Draw(window);
+	m_upgradeHealth.Draw(window);
 }
 
 void Player::Movement(float dt)
