@@ -12,5 +12,7 @@ public:
 	void Render(sf::RenderWindow& window);
 private:
 	sf::Sprite m_sprite;
+
+	float m_speed;
 };
 
