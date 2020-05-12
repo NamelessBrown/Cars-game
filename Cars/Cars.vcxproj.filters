@@ -60,6 +60,9 @@
     <ClCompile Include="Bombs.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Music.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Animation.h">
@@ -99,6 +102,9 @@
       <Filter>Source Files\GameStates</Filter>
     </ClInclude>
     <ClInclude Include="Bombs.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Music.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

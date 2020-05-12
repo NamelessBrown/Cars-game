@@ -171,6 +171,7 @@
     <ClCompile Include="GameStateManager.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="MainMenuState.cpp" />
+    <ClCompile Include="Music.cpp" />
     <ClCompile Include="PickCarState.cpp" />
     <ClCompile Include="Player.cpp" />
     <ClCompile Include="PlayState.cpp" />
@@ -186,6 +187,7 @@
     <ClInclude Include="GameState.h" />
     <ClInclude Include="GameStateManager.h" />
     <ClInclude Include="MainMenuState.h" />
+    <ClInclude Include="Music.h" />
     <ClInclude Include="PickCarState.h" />
     <ClInclude Include="Player.h" />
     <ClInclude Include="PlayState.h" />
