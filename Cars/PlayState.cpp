@@ -80,7 +80,7 @@ void PlayState::Update(sf::RenderWindow& window, const float dt)
 
 		}
 
-		m_player.Update(dt);
+		m_player.Update(window, dt);
 		MoveBackground(dt);
 
 		Collision();
