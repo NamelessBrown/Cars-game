@@ -22,6 +22,7 @@ public:
 private:
     void MoveBackground(const float dt);
     void SpawnBomb(int amount);
+    void Collision();
 private:
     ResourceHolder& m_resourceManger;
     GameStateManager& m_gameStateManager;

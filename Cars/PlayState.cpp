@@ -1,6 +1,7 @@
 #include "PlayState.h"
 #include <iostream>
 #include "GameOverState.h"
+#include "Collision.h"
 
 PlayState::PlayState(ResourceHolder& resourceManger, sf::IntRect& textureRect, GameStateManager& gameStateManager)
 	:m_resourceManger(resourceManger), m_player(m_resourceManger.getTexture("Textures/cars.jpg"), textureRect), 
@@ -51,14 +52,23 @@ void PlayState::SpawnBomb(int amount)
 	}
 }
 
+void PlayState::Collision()
+{
+	for(unsigned i = 0; i < m_bombs.size(); i++)
+	{
+		if (Collision::AxisAlignedBoundingBox(m_player.GetSprite(), m_bombs[i].GetSprite()))
+		{
+			m_player.LoseHealth(m_bombs[i].GetDamage());
+			m_bombs.erase(m_bombs.begin() + i);
+		}
+	}
+}
+
 void PlayState::Update(sf::RenderWindow& window, const float dt)
 {
 	if (!m_player.isDead())
 	{
-		m_player.Update(dt);
-		MoveBackground(dt);
-
-		for (int i = 0; i < m_bombs.size(); i++)
+		for (unsigned i = 0; i < m_bombs.size(); i++) //Bombs update first
 		{
 			m_bombs[i].Update(dt);
 
@@ -68,6 +78,11 @@ void PlayState::Update(sf::RenderWindow& window, const float dt)
 			}
 
 		}
+
+		m_player.Update(dt);
+		MoveBackground(dt);
+
+		Collision();
 
 		if (m_bombs.size() < 3)
 		{
