@@ -28,7 +28,6 @@ private:
     GameStateManager& m_gameStateManager;
     sf::Sprite m_background;
 
-    Button m_upgradeButton;
     Player m_player;
     std::vector<Bombs> m_bombs;
 
