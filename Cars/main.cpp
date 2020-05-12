@@ -5,8 +5,8 @@
 
 int main()
 {
-	sf::RenderWindow test(sf::VideoMode(1280, 720), "Test", sf::Style::Titlebar | sf::Style::Close);
+	sf::RenderWindow game(sf::VideoMode(1280, 720), "Car bombers", sf::Style::Titlebar | sf::Style::Close);
 
-	Engine e(test);
+	Engine e(game);
 	e.Run();
 }
