@@ -5,8 +5,9 @@
 
 int main()
 {
-	sf::RenderWindow game(sf::VideoMode(1280, 720), "Car bombers", sf::Style::Titlebar | sf::Style::Close);
+	Engine::GetInstance()->Init(100, 100, 1280, 720, false, "Cars");
 
-	Engine e(game);
-	e.Run();
+	Engine::GetInstance()->Run();
+
+	Engine::GetInstance()->Quit();
 }
