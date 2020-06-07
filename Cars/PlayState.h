@@ -7,6 +7,7 @@
 #include "Button.h"
 #include "GameStateManager.h"
 #include "Bombs.h"
+#include "Powerup.h"
 
 class PlayState : public GameState
 {
@@ -22,12 +23,14 @@ public:
 private:
     void MoveBackground(const float dt);
     void SpawnBomb(int amount);
+    void SpawnPowerup(int amount);
     void Collision();
 private:
     sf::Sprite m_background;
 
     Player m_player;
     std::vector<Bombs> m_bombs;
+    std::vector<Powerup> m_powerups;
 
     double m_backgroundScroll;
     double m_backgroundScrollSpeed;

@@ -12,6 +12,7 @@ PlayState::PlayState(sf::IntRect& textureRect)
 	m_background.setPosition(300.f, 0.f);
 
 	SpawnBomb(5);
+	SpawnPowerup(1);
 }
 
 PlayState::~PlayState()
@@ -53,6 +54,14 @@ void PlayState::SpawnBomb(int amount)
 	}
 }
 
+void PlayState::SpawnPowerup(int amount)
+{
+	for (int i = 0; i < amount; i++)
+	{
+		m_powerups.emplace_back(Powerup(ResourceHolder::GetInstance()->getTexture("Textures/powerup.png")));
+	}
+}
+
 void PlayState::Collision()
 {
 	for(unsigned i = 0; i < m_bombs.size(); i++)
@@ -63,6 +72,16 @@ void PlayState::Collision()
 			m_bombs.erase(m_bombs.begin() + i);
 		}
 	}
+
+	for (unsigned i = 0; i < m_powerups.size(); i++)
+	{
+		if (Collision::AxisAlignedBoundingBox(m_player.GetSprite(), m_powerups[i].GetSprite()))
+		{
+			m_player.GainPowerup(m_powerups[i].GetSpeed());
+			m_powerups.erase(m_powerups.begin() + i);
+		}
+	}
+
 }
 
 void PlayState::Update(sf::RenderWindow& window, const float dt)
@@ -81,6 +100,17 @@ void PlayState::Update(sf::RenderWindow& window, const float dt)
 
 		}
 
+		for (unsigned i = 0; i < m_powerups.size(); i++) //powerups update second
+		{
+			m_powerups[i].Update(dt);
+
+			if (m_powerups[i].GetSprite().getPosition().y > 720)
+			{
+				m_powerups.erase(m_powerups.begin() + i);
+			}
+
+		}
+
 		m_player.Update(window, dt);
 		MoveBackground(dt);
 
@@ -89,6 +119,11 @@ void PlayState::Update(sf::RenderWindow& window, const float dt)
 		if (m_bombs.size() < 3) 
 		{
 			SpawnBomb(4);
+		}
+
+		if (m_powerups.size() <= 0)
+		{
+			SpawnPowerup(1);
 		}
 
 	}
@@ -106,6 +141,11 @@ void PlayState::Render(sf::RenderWindow& window)
 	m_player.Render(window);
 
 	for (auto& e : m_bombs)
+	{
+		e.Render(window);
+	}
+
+	for (auto& e : m_powerups)
 	{
 		e.Render(window);
 	}
