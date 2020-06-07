@@ -25,9 +25,6 @@ private:
 	sf::Event m_event;
 	sf::Clock m_clock;
 
-	ResourceHolder m_resourceManager;
-	GameStateManager m_stateManager;
-
 	Music m_music;
 
 };

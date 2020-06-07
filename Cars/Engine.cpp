@@ -1,5 +1,6 @@
 #include "Engine.h"
 #include "MainMenuState.h"
+#include "GameStateManager.h"
 #include <iostream>
 
 Engine* Engine::s_instance = nullptr;
@@ -38,7 +39,8 @@ bool Engine::Init(unsigned x, unsigned y, unsigned width, unsigned height, bool 
 	pic.loadFromFile("Textures/Cars title menu.png");
 	m_window.setIcon(pic.getSize().x, pic.getSize().y, pic.getPixelsPtr());
 
-	m_stateManager.PushState(new MainMenuState(m_resourceManager, m_stateManager));
+
+	GameStateManager::GetInstance()->PushState(new MainMenuState());
 
 	m_music.Play();
 
@@ -50,9 +52,9 @@ void Engine::Run()
 	while (m_window.isOpen())
 	{
 		float dt = m_clock.restart().asSeconds() * 60.f;
-		m_stateManager.CurrentState()->HandleInput(m_window, m_event);
-		m_stateManager.CurrentState()->Update(m_window, dt);
-		m_stateManager.CurrentState()->Render(m_window);
+		GameStateManager::GetInstance()->CurrentState()->HandleInput(m_window, m_event);
+		GameStateManager::GetInstance()->CurrentState()->Update(m_window, dt);
+		GameStateManager::GetInstance()->CurrentState()->Render(m_window);
 
 		if (m_music.GetCurrentSong().getStatus() == sf::Music::Stopped)
 		{
@@ -64,6 +66,7 @@ void Engine::Run()
 
 void Engine::Quit()
 {
-	m_window.close();
+	ResourceHolder::GetInstance()->Quit();
+	GameStateManager::GetInstance()->Quit();
 	delete s_instance;
 }
