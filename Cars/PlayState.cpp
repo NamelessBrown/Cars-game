@@ -3,12 +3,12 @@
 #include "GameOverState.h"
 #include "Collision.h"
 
-PlayState::PlayState(ResourceHolder& resourceManger, sf::IntRect& textureRect, GameStateManager& gameStateManager)
-	:m_resourceManger(resourceManger), m_player(m_resourceManger.getTexture("Textures/cars.jpg"), textureRect, 
-		resourceManger.getFont("Font/NovaMono.ttf"), m_resourceManger.getTexture("Textures/upgradeSpeed.png")), 
-	m_backgroundScroll(.5f), m_backgroundScrollSpeed(.5f), m_gameStateManager(gameStateManager)
+PlayState::PlayState(sf::IntRect& textureRect)
+	:m_player(ResourceHolder::GetInstance()->getTexture("Textures/cars.jpg"), textureRect,
+		ResourceHolder::GetInstance()->getFont("Font/NovaMono.ttf"), ResourceHolder::GetInstance()->getTexture("Textures/upgradeSpeed.png")),
+	m_backgroundScroll(.5f), m_backgroundScrollSpeed(.5f)
 {
-	m_background.setTexture(m_resourceManger.getTexture("Textures/road.jpg"));
+	m_background.setTexture(ResourceHolder::GetInstance()->getTexture("Textures/road.jpg"));
 	m_background.setPosition(300.f, 0.f);
 
 	SpawnBomb(5);
@@ -49,7 +49,7 @@ void PlayState::SpawnBomb(int amount)
 {
 	for (int i = 0; i < amount; i++)
 	{
-		m_bombs.emplace_back(Bombs(m_resourceManger.getTexture("Textures/bomb.png")));
+		m_bombs.emplace_back(Bombs(ResourceHolder::GetInstance()->getTexture("Textures/bomb.png")));
 	}
 }
 
@@ -94,7 +94,7 @@ void PlayState::Update(sf::RenderWindow& window, const float dt)
 	}
 	else
 	{
-		m_gameStateManager.PushState(new GameOverState(m_resourceManger, m_gameStateManager));
+		GameStateManager::GetInstance()->ChangeState(new GameOverState());
 	}
 }
 

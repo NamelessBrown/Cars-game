@@ -9,7 +9,7 @@
 class MainMenuState : public GameState
 {
 public:
-    MainMenuState(ResourceHolder& textureManger, GameStateManager& states);
+    MainMenuState();
     MainMenuState(const MainMenuState&) = delete;
     MainMenuState& operator=(const MainMenuState&) = delete;
     ~MainMenuState();
@@ -18,9 +18,6 @@ public:
     virtual void Update(sf::RenderWindow& window, const float dt);
     virtual void HandleInput(sf::RenderWindow& window, sf::Event& events);
 private:
-    GameStateManager& m_stateManagerRef;
-    ResourceHolder& m_resourceManagerRef;
-
     sf::Sprite m_background;
 
     Button m_startButton;

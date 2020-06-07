@@ -11,7 +11,7 @@
 class PlayState : public GameState
 {
 public:
-    PlayState(ResourceHolder& resourceManger, sf::IntRect& textureRect, GameStateManager& gameStateManager);
+    PlayState(sf::IntRect& textureRect);
     PlayState(const PlayState&) = delete;
     PlayState& operator=(const PlayState&) = delete;
     ~PlayState();
@@ -24,8 +24,6 @@ private:
     void SpawnBomb(int amount);
     void Collision();
 private:
-    ResourceHolder& m_resourceManger;
-    GameStateManager& m_gameStateManager;
     sf::Sprite m_background;
 
     Player m_player;

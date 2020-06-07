@@ -9,7 +9,7 @@
 class PickCarState : public GameState
 {
 public:
-	PickCarState(ResourceHolder& resources, GameStateManager& gameStateRef);
+	PickCarState();
 	PickCarState(const PickCarState&) = delete;
 	PickCarState& operator=(const PickCarState&) = delete;
 	~PickCarState();
@@ -18,9 +18,6 @@ public:
 	virtual void Update(sf::RenderWindow& window, const float dt);
 	virtual void HandleInput(sf::RenderWindow& window, sf::Event& events);
 private:
-	ResourceHolder& m_resourceRef;
-	GameStateManager& m_gameStateManagerRef;
-
 	sf::Sprite m_Cars;
 	sf::IntRect m_textureRect;
 

@@ -1,10 +1,12 @@
 #include "PickCarState.h"
 
-PickCarState::PickCarState(ResourceHolder& resources, GameStateManager& gameStateRef)
-	:m_resourceRef(resources), m_leftButton({250.f, 150.f}, resources.getFont("Font/NovaMono.ttf"), resources.getTexture("Textures/left arrow.png"), 12),
-	m_rightButton({1150.f, 150.f}, resources.getFont("Font/NovaMono.ttf"), resources.getTexture("Textures/right arrow.png"), 12),
-	m_currentCar({750.f, 450.f}, resources.getFont("Font/NovaMono.ttf"),  resources.getTexture("Textures/current car.png"), 12),
-	m_gameStateManagerRef(gameStateRef)
+PickCarState::PickCarState()
+	:m_leftButton({250.f, 150.f}, ResourceHolder::GetInstance()->getFont("Font/NovaMono.ttf"), 
+		ResourceHolder::GetInstance()->getTexture("Textures/left arrow.png"), 12),
+	m_rightButton({1150.f, 150.f}, ResourceHolder::GetInstance()->getFont("Font/NovaMono.ttf"),
+		ResourceHolder::GetInstance()->getTexture("Textures/right arrow.png"), 12),
+	m_currentCar({750.f, 450.f}, ResourceHolder::GetInstance()->getFont("Font/NovaMono.ttf"),  
+		ResourceHolder::GetInstance()->getTexture("Textures/current car.png"), 12)
 {
 	m_leftButton.SetScale(6);
 	m_rightButton.SetScale(2);
@@ -13,7 +15,7 @@ PickCarState::PickCarState(ResourceHolder& resources, GameStateManager& gameStat
 	m_rightButton.SetText("");
 	m_currentCar.SetText("");
 
-	m_Cars.setTexture(m_resourceRef.getTexture("Textures/cars.jpg"));
+	m_Cars.setTexture(ResourceHolder::GetInstance()->getTexture("Textures/cars.jpg"));
 	m_textureRect = sf::IntRect(800, 0, 225, 156);
 	m_Cars.setTextureRect(m_textureRect);
 	m_Cars.setScale(m_Cars.getScale() / 2.f);
@@ -65,7 +67,7 @@ void PickCarState::Update(sf::RenderWindow& window, const float dt)
 {
 	if (m_currentCar.IsClicked(sf::Mouse::getPosition(window)))
 	{
-		m_gameStateManagerRef.PushState(new PlayState(m_resourceRef, m_textureRect, m_gameStateManagerRef));
+		GameStateManager::GetInstance()->ChangeState(new PlayState(m_textureRect));
 	}
 }
 

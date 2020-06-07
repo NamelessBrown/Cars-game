@@ -8,7 +8,7 @@
 class GameOverState : public GameState
 {
 public:
-    GameOverState(ResourceHolder& resources, GameStateManager& gameStateManager);
+    GameOverState();
     GameOverState(const GameOverState&) = delete;
     GameOverState& operator=(const GameOverState&) = delete;
     ~GameOverState();
@@ -17,9 +17,6 @@ public:
     virtual void Update(sf::RenderWindow& window, const float dt);
     virtual void HandleInput(sf::RenderWindow& window, sf::Event& events);
 private:
-    ResourceHolder& m_resourceMananger;
-    GameStateManager& m_gameStateManager;
-
     Button m_playAgainButton;
     Button m_quitButton;
 
