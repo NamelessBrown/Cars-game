@@ -1,8 +1,25 @@
 #include "ResourceHolder.h"
 
+ResourceHolder* ResourceHolder::s_instance = nullptr;
+
 ResourceHolder::ResourceHolder()
     :m_textures()
 {
+}
+
+ResourceHolder* ResourceHolder::GetInstance()
+{
+    if (s_instance == nullptr)
+    {
+        s_instance = new ResourceHolder();
+    }
+
+    return s_instance;
+}
+
+void ResourceHolder::Quit()
+{
+    delete s_instance;
 }
 
 sf::Texture& ResourceHolder::getTexture(std::string path)
