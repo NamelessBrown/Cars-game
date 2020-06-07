@@ -8,14 +8,20 @@
 class Engine
 {
 public:
-	Engine(sf::RenderWindow& window);
-	Engine(const Engine&) = delete;
-	Engine& operator=(const Engine&) = delete;
 	~Engine();
 
+	static Engine* GetInstance();
+
+	bool Init(unsigned x, unsigned y, unsigned width, unsigned height, bool fullscreen, const std::string& title);
 	void Run();
+	void Quit();
 private:
-	sf::RenderWindow& m_window;
+	Engine();
+	Engine(const Engine&) = delete;
+	Engine& operator=(const Engine&) = delete;
+private:
+	static Engine* s_instance;
+	sf::RenderWindow m_window;
 	sf::Event m_event;
 	sf::Clock m_clock;
 

@@ -1,10 +1,39 @@
 #include "Engine.h"
 #include "MainMenuState.h"
+#include <iostream>
 
-Engine::Engine(sf::RenderWindow& window)
-	:m_window(window), m_event(sf::Event())
+Engine* Engine::s_instance = nullptr;
+
+Engine::Engine()
+	:m_event(sf::Event())
 {
-	/* window icon! */
+}
+
+Engine::~Engine()
+{
+	std::cout << "Engine gone...\n";
+}
+
+Engine* Engine::GetInstance()
+{
+	if (s_instance == nullptr)
+	{
+		s_instance = new Engine();
+	}
+
+	return s_instance;
+}
+
+bool Engine::Init(unsigned x, unsigned y, unsigned width, unsigned height, bool fullscreen, const std::string& title)
+{
+	if (fullscreen)
+		m_window.create(sf::VideoMode(width, height), title, sf::Style::None);
+	else
+		m_window.create(sf::VideoMode(width, height), title, sf::Style::Close | sf::Style::Titlebar);
+
+	if (!m_window.isOpen())
+		return false;
+
 	sf::Image pic;
 	pic.loadFromFile("Textures/Cars title menu.png");
 	m_window.setIcon(pic.getSize().x, pic.getSize().y, pic.getPixelsPtr());
@@ -12,10 +41,8 @@ Engine::Engine(sf::RenderWindow& window)
 	m_stateManager.PushState(new MainMenuState(m_resourceManager, m_stateManager));
 
 	m_music.Play();
-}
 
-Engine::~Engine()
-{
+	return true;
 }
 
 void Engine::Run()
@@ -33,4 +60,10 @@ void Engine::Run()
 		}
 
 	}
+}
+
+void Engine::Quit()
+{
+	m_window.close();
+	delete s_instance;
 }
